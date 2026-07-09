@@ -94,5 +94,7 @@ _ide_helper_models.php
 .phpunit.result.cache
 modules/*
 !modules/.gitkeep
+!modules/OfflinePayments/
+!modules/PaypalStandard/
 .laravelstatsrc
 .DS_Store
