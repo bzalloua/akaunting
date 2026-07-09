@@ -41,8 +41,8 @@ class Overrider
         // Email
         $email_protocol = setting('email.protocol', 'mail');
         config(['mail.default' => $email_protocol]);
-        config(['mail.from.name' => setting('company.name')]);
-        config(['mail.from.address' => setting('company.email')]);
+        config(['mail.from.name' => setting('company.name') ?: config('mail.from.name')]);
+        config(['mail.from.address' => setting('company.email') ?: config('mail.from.address')]);
 
         if ($email_protocol == 'sendmail') {
             config(['mail.mailers.sendmail.path' => setting('email.sendmail_path')]);
