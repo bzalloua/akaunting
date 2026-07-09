@@ -30,5 +30,5 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Livewire::setUpdateRoute(function ($handle) {
-    return Route::post('livewire/update', $handle);
+    return Route::post('livewire/update', $handle)->name('company.livewire.update');
 });
