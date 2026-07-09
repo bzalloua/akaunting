@@ -29,6 +29,7 @@ mix
     .options({
         terser: {
             extractComments: false,
+            parallel: false,
         }
     })
 
