@@ -39,7 +39,7 @@ class Overrider
         date_default_timezone_set(config('app.timezone'));
 
         // Email
-        $email_protocol = setting('email.protocol', 'mail');
+        $email_protocol = setting('email.protocol') ?: config('mail.default');
         config(['mail.default' => $email_protocol]);
         config(['mail.from.name' => setting('company.name') ?: config('mail.from.name')]);
         config(['mail.from.address' => setting('company.email') ?: config('mail.from.address')]);
