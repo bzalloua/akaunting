@@ -98,3 +98,4 @@ modules/*
 !modules/PaypalStandard/
 .laravelstatsrc
 .DS_Store
+.playwright-mcp/
