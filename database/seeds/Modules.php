@@ -26,16 +26,18 @@ class Modules extends Seeder
     {
         $company_id = $this->command->argument('company');
 
-        Artisan::call('module:install', [
-            'alias'     => 'offline-payments',
-            'company'   => $company_id,
-            'locale'    => session('locale', company($company_id)->locale),
-        ]);
+        foreach (['offline-payments', 'paypal-standard'] as $alias) {
+            // Bundled modules ship separately from the core repo; skip
+            // auto-install if they're not present on this deployment.
+            if (empty(module($alias))) {
+                continue;
+            }
 
-        Artisan::call('module:install', [
-            'alias'     => 'paypal-standard',
-            'company'   => $company_id,
-            'locale'    => session('locale', company($company_id)->locale),
-        ]);
+            Artisan::call('module:install', [
+                'alias'     => $alias,
+                'company'   => $company_id,
+                'locale'    => session('locale', company($company_id)->locale),
+            ]);
+        }
     }
 }
